@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+<html>
+<head>
+
+  </head>
+  <body>
+    {% block heading %}<h2>Log in Page</h2>{% endblock %}
+    {% block body%}
+
+    {% if welcome %}
+      <form action="{{ url_for('start') }}" method="post">
+        <input type="text" name="userid" placeholder="User">
+        <input type="text" name="password" placeholder="Password"><br>
+        <button>Submit</button><br>
+      </form>
+        <a href="{{ url_for('signin') }}">Sign In</a><br>
+
+    {% else %}
+      <h2>Good Bye</h2>
+      <p>See you soon, meanwhile HAPPY READINGS</p>
+    {% endif %}
+    {% endblock %}
+  </body>
+  </html>

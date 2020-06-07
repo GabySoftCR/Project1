@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<style>
+   body { text-align: center;
+          background-color: lavender; }
+</style>
+    <head>
+      <title>Books</title>
+    </head>
+    <body>
+        <h1>Book Reviews Website</h1>
+        <h2>{%block heading%}{% endblock %}</h2>
+        <p>The place to make and find book reviews<p>
+
+
+      <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+        integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+        crossorigin="anonymous"-->
+
+        <div class="container">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

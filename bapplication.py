@@ -42,11 +42,10 @@ def start():
     session.pop("username",user_id)
     user=db.execute("SELECT user_id, password, name FROM users WHERE user_id = :user_id",
             {"user_id": user_id}).fetchone()
-    if password != user.password :
-        return (f"Login Error {password} not equal to {user.password}")
-    else:
-        return render_template("start.html", user_id=user_id, name=user.name, password=user.password)
-
+    #if password == user.password :
+    return render_template("start.html", user_id=user_id, name=user.name, password=user.password)
+    #else:
+    #    return print ("Wrong password")
 
 
 @app.route("/signin")

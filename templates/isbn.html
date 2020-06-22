@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+<html>
+
+  <body>
+
+    {% block heading %}
+      <h1>Goodreads Api Search</h1>
+    {% endblock %}
+
+    {% block body %}
+        <h1>Resulting JSON</h1>
+
+        <form action="{{ url_for('api') }}">
+            <div class="form-group">
+                <strong><label>Goodreads JSON</label></strong><p>{{data}}</p><br>
+
+                <p>Book ISBN : {{book.isbn}}</p>
+                <p>Book Title: {{book.title}}</p>
+                <p>Good Reads Average Rating: {{average}}</p>
+                <p>Good Reads Reviews Count: {{count}}</p>
+                <strong><label>My JSON</label></strong><p>{{my_json}}</p><br>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary">New ISBN Search</button>
+            </div>
+
+        </form>
+    {% endblock %}
+
+  </body>
+</html>

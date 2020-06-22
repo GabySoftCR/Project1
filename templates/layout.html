@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<html>
+<style>
+   body {text-align: center;
+        background-color: lavender; }
+  /* Add a black background color to the top navigation */
+    .topnav {
+    background-color: #333;
+    overflow: hidden;
+    }
+
+/* Style the links inside the navigation bar */
+    .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+.checked {
+  color: orange;
+}
+.tooltip {
+  visibility: visible;
+}
+.tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: grey;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+.tooltiptext:hover {
+  visibility: visible;
+  background-color: yellow;
+}
+
+</style>
+    <head>
+      <title>Books</title>
+
+    </head>
+    <body>
+        {%block heading%}
+        <h1>Book Reviews Website</h1><br>
+        <div class="topnav">
+        <a class="active" href="{{ url_for('search') }}">Search</a>
+        <a href="{{ url_for('out') }}">Logout</a>
+        <a href="{{ url_for('api') }}">Goodreads Api</a><br>
+    </div>
+        {% endblock %}
+
+        <div class="container">
+            {% block body %}
+            {% endblock %}
+        </div>
+{% block content %}
+<div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+     {% endfor %}
+    {% block page_content %}{% endblock %}
+</div>
+{% endblock %}
+    <footer>
+        <br><br><br>
+      <br><small>Find and post book reviews<small><br>
+      <small>&copy; 2020, GabySoftCr - Gabriela Pacheco P</small>
+    </footer>
+    </body>
+</html>

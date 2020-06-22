@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block title %}
+    Greads Api
+{% endblock %}
+
+    {% block body %}
+        <h1>Goodreads Api Search</h1>
+        <label>Search Goodreads API given an ISBN</label>
+        <form action="/api", name=isbn_id id=isbn_id method="POST">
+            <div class="form-group">
+                <input class="form-control" name="isbn_id" placeholder="ISBN" required><br>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" value=isbn_id>Get Jason</button>
+            </div>
+        </form>
+    {% endblock %}

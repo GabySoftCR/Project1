@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Book Info
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid" style="text-align:left">
+        <div class="row">
+            <div class="col-md-6" style="background-color:whitesmoke">
+                <form action="{{ url_for('add_review') }}" method="post" name=book.id>
+                <div class="form-group">
+                    <h2>{{book.title}}</h2>
+                    <h4>by {{book.author}} Published: {{book.year}}</h4>
+                    <h4>
+                    <a href="{{ url_for('gread', isbn_id=book.isbn) }}" >
+                    ISBN:{{ book.isbn }}
+                    </a><span class="tooltiptext">Get JSON</span>
+                    </h4><br>
+                </div>
+
+                <div class="form-group">
+                    <label style="text-align: left">Your Review:</label>
+                    <input class="form-control" name="add_rating" type=number min="1" max="5" id="add_rating" placeholder="Rating 1-5" required>
+                    <input class="form-control" name="add_review" id="add_review" placeholder="Comment" required>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-primary" style="text-align: right">Add Review</button>
+                </div>
+                </form>
+             </div>
+
+
+    <div class="col-md-6" style="background-color:ghostwhite">
+        <h5><i class="fa fa-book fa-fw w3-margin-right w3-large w3-text-teal"></i> Reviews on this site</h5>
+
+        <ul>
+            {% for review in reviews %}
+                <li>
+                    {% for x in range (5) %}
+                    {% if x< review.rating %}
+                        <span class="fa fa-star checked"></span>
+                    {% else %}
+                        <span class="fa fa-star"></span>
+                    {% endif %}
+                    {% endfor %}
+                    {{review.review}}
+                </li>
+            {% endfor %}
+        </ul>
+
+        <hr>
+        <h5><img src="{{url_for('static', filename='greads.png')}}" width="25" height="25"/> Goodreads</h5>
+        <p>Average Rating   : {{average}}</p>
+        <p>Number of Ratings: {{count}}</p>
+    </div>
+
+
+{% endblock %}

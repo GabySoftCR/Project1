@@ -1,4 +1,4 @@
-CREATE TABLE books2 (
+CREATE TABLE books(
     book_id SERIAL PRIMARY KEY,
     isbn  VARCHAR NOT NULL,
     title VARCHAR NOT NULL,
@@ -6,22 +6,34 @@ CREATE TABLE books2 (
     year INTEGER NOT NULL
 );
 CREATE TABLE users (
-    unum SERIAL PRIMARY KEY,
+    user_s SERIAL PRIMARY KEY,
     user_id VARCHAR UNIQUE NOT NULL,
     password VARCHAR NOT NULL,
     name VARCHAR NOT NULL
 );
 CREATE TABLE reviews (
     rev_id SERIAL PRIMARY KEY,
-    isbn VARCHAR NOT NULL,
-    userid VARCHAR NOT NULL,
-    review VARCHAR NOT NULL
+    book_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL,
+    review VARCHAR NOT NULL,
+    rating INTEGER NOT NULL
 );
-INSERT INTO books2 (isbn, title, author, year) VALUES
-('200',	'Programming',	'Gabriela Pacheco',	2020);
+ALTER TABLE users
+  RENAME  unum TO user_s;
 
-SELECT * FROM books;
 
 FROM 'books.csv' DELIMITER ',' CSV HEADER;
 
-create unique index users_lemail_idx on users (lower(user_id));
+CREATE UNIQUE INDEX idx_user_book ON reviews (book_id, user_id);
+CREATE INDEX idx_all_lower ON books (lower(title), lower(author), lower(isbn));
+CREATE UNIQUE index users_lemail_idx on users (lower(user_id));
+
+DELETE FROM reviews WHERE book_id = '10715';
+DELETE FROM users WHERE user_id = 'lucycast@hotmail';
+
+
+ books=db.execute("SELECT isbn, title, author, year FROM books WHERE :sb LIKE '%ss%",
+            {"sb": sb}, {"ss": ss}).fetchall
+
+ books=db.execute("SELECT isbn, title, author, year FROM books WHERE author LIKE '%way%",
+            {"sb": sb}, {"ss": ss}).fetchall

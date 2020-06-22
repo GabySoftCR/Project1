@@ -1,4 +1,11 @@
 Flask
 Flask-Session
-psycopg2-binary
 SQLAlchemy
+Flask-render_template
+Flask request
+Flask jsonify
+Flask flash
+Flask redirect
+Flask url_for
+
+import requests

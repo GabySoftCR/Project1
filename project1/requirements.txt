@@ -1,0 +1,11 @@
+Flask
+Flask-Session
+SQLAlchemy
+Flask-render_template
+Flask request
+Flask jsonify
+Flask flash
+Flask redirect
+Flask url_for
+
+import requests

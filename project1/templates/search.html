@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    SEARCH
+{% endblock %}
+
+{% block body %}
+
+<form action="{{ url_for('books') }}" method="post">
+<label>Search book by:</label>
+
+<div class="form-group">
+  <select multiple class="form-control"  name="s_by" id=s_by">
+      <option value="title" selected>Title</option>
+      <option value="author">Author</option>
+      <option value="isbn">ISBN</option>
+  </select>
+</div>
+<div class="form-group">
+    <input class="form-control" name="s_str" id="s_str" placeholder="Type Search Data" required>
+</div>
+<div class="form-group">
+    <br><button class="btn btn-primary">Search</button>
+</div>
+</form>
+
+{% endblock %}

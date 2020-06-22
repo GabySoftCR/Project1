@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+<html>
+<head>
+
+  </head>
+  <body>
+    {% block heading %}
+    <h1>Book Reviews Website</h1
+    <br><br><h2>Log In Page</h2><br>
+    {% endblock %}
+    {% block body%}
+
+    {% if 'user_id' not in session %}
+      <form action="{{ url_for('login') }}" method="post">
+        <input type="email" name="user_id" placeholder="email" required>
+        <input type="password" name="password" placeholder="Password" pattern="[^'\x22]+" title="Invalid input" required><br>
+        <div class="form-group">
+          <br><button class="btn btn-primary">Submit</button>
+        </div>
+        <br><a href="{{ url_for('signin') }}">Sign In</a><br>
+        <img src="{{url_for('static', filename='books.jpg')}}" align="middle" height="250" width="250"/>
+      </form>
+    {% else %}
+      <h2>Good Bye</h2>
+      <p>See you soon! HAPPY READINGS</p>
+    <br><a href="{{ url_for('index') }}">Login</a><br>
+    {% endif %}
+    {% endblock %}
+  </body>
+  </html>
